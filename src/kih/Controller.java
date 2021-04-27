@@ -1,6 +1,7 @@
 package kih;
 
 import javafx.fxml.FXML;
+import javafx.scene.chart.LineChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 
@@ -21,4 +22,11 @@ public class Controller {
     private TextField in_data_file_name;
     @FXML
     private TextField out_data_file_name;
+
+    @FXML
+    private LineChart<Number,Number> data;
+    @FXML
+    private LineChart<Number,Number> core;
+    @FXML
+    private LineChart<Number,Number> afh;
 }

@@ -19,7 +19,7 @@
             fx:controller="kih.Controller">
     <center>
         <VBox fx:id="GraphBoxTabPane" prefHeight="90" prefWidth="1510.0">
-            <LineChart fx:id="Data" animated="false" prefHeight="235" prefWidth="1600">
+            <LineChart fx:id="data" animated="false" title="Исходный сигнал" prefHeight="235" prefWidth="1600">
                 <xAxis>
                    <NumberAxis fx:id="xAxisData" side="BOTTOM"/>
                 </xAxis>
@@ -27,7 +27,7 @@
                     <NumberAxis fx:id="yAxisData" lowerBound="-50" upperBound="50" side="LEFT" />
                 </yAxis>
             </LineChart>
-            <LineChart fx:id="Core" animated="false" prefHeight="235" prefWidth="1600">
+            <LineChart fx:id="core" animated="false" title="Ядро фильтра" prefHeight="235" prefWidth="1600">
                 <xAxis>
                     <NumberAxis fx:id="xAxisCore" side="BOTTOM"/>
                 </xAxis>
@@ -35,7 +35,7 @@
                     <NumberAxis fx:id="yAxisCore" lowerBound="-50" upperBound="50" side="LEFT" />
                 </yAxis>
             </LineChart>
-            <LineChart fx:id="AFH" animated="false" prefHeight="235" prefWidth="1600">
+            <LineChart fx:id="afh" animated="false" title="Фильтрованный сигнал" prefHeight="235" prefWidth="1600">
                 <xAxis>
                     <NumberAxis fx:id="xAxisAFH" side="BOTTOM"/>
                 </xAxis>
