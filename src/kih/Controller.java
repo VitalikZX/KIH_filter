@@ -14,4 +14,11 @@ public class Controller {
     private TextField in_data_file_path;
     @FXML
     private TextField out_data_file_path;
+
+    @FXML
+    private TextField h_file_name;
+    @FXML
+    private TextField in_data_file_name;
+    @FXML
+    private TextField out_data_file_name;
 }
