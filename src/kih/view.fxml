@@ -52,35 +52,47 @@
                     <opaqueInsets >
                         <Insets bottom="2.5" top="2.5" left="5" right="5"/>
                     </opaqueInsets>
-                    <Label fx:id="h_file"  alignment="CENTER_LEFT" contentDisplay="LEFT" prefWidth="250" prefHeight="25" snapToPixel="false" text="Файл с ядром фильтра: " textAlignment="LEFT" textFill="BLACK" BorderPane.alignment="CENTER"/>
-                    <TextField fx:id="h_file_path" prefWidth="1000" prefHeight="25" text="C:\"/>
+                    <Label prefWidth="10" prefHeight="25"/>
+                    <Label fx:id="in_data_file" alignment="CENTER_LEFT" contentDisplay="LEFT" prefWidth="230" prefHeight="25" snapToPixel="false" text="Файл с данными для фильтрации: " textAlignment="LEFT" textFill="BLACK" BorderPane.alignment="CENTER"/>
+                    <TextField fx:id="in_data_file_path" prefWidth="890" prefHeight="25" text="C:\"/>
+                    <Label prefWidth="10" prefHeight="25"/>
                     <Label alignment="CENTER_LEFT" contentDisplay="LEFT" prefWidth="50" prefHeight="25" snapToPixel="false" text="Имя: " textAlignment="LEFT" textFill="BLACK" BorderPane.alignment="CENTER"/>
-                    <TextField fx:id="h_file_name" prefWidth="205" prefHeight="25" text="h_file.txt"/>
+                    <TextField fx:id="in_data_file_name" prefWidth="200" prefHeight="25" text="in_data_file.txt"/>
+                    <Label prefWidth="10" prefHeight="25"/>
+                    <ChoiceBox fx:id="in_data_radix" prefWidth="100" prefHeight="25"/>
                 </HBox>
                 <HBox prefHeight="30.0" prefWidth="1500">
                     <opaqueInsets >
                         <Insets bottom="2.5" top="2.5" left="5" right="5"/>
                     </opaqueInsets>
-                    <Label fx:id="in_data_file" alignment="CENTER_LEFT" contentDisplay="LEFT" prefWidth="250" prefHeight="25" snapToPixel="false" text="Файл с данными для фильтрации: " textAlignment="LEFT" textFill="BLACK" BorderPane.alignment="CENTER"/>
-                    <TextField fx:id="in_data_file_path" prefWidth="1000" prefHeight="25" text="C:\"/>
+                    <Label prefWidth="10" prefHeight="25"/>
+                    <Label fx:id="h_file"  alignment="CENTER_LEFT" contentDisplay="LEFT" prefWidth="230" prefHeight="25" snapToPixel="false" text="Файл с ядром фильтра: " textAlignment="LEFT" textFill="BLACK" BorderPane.alignment="CENTER"/>
+                    <TextField fx:id="h_file_path" prefWidth="890" prefHeight="25" text="C:\"/>
+                    <Label prefWidth="10" prefHeight="25"/>
                     <Label alignment="CENTER_LEFT" contentDisplay="LEFT" prefWidth="50" prefHeight="25" snapToPixel="false" text="Имя: " textAlignment="LEFT" textFill="BLACK" BorderPane.alignment="CENTER"/>
-                    <TextField fx:id="in_data_file_name" prefWidth="205" prefHeight="25" text="in_data_file.txt"/>
+                    <TextField fx:id="h_file_name" prefWidth="200" prefHeight="25" text="h_file.txt"/>
+                    <Label prefWidth="10" prefHeight="25"/>
+                    <ChoiceBox fx:id="h_file_radix" prefWidth="100" prefHeight="25"/>
                 </HBox>
                 <HBox prefHeight="30.0" prefWidth="1500">
                     <opaqueInsets >
                         <Insets bottom="2.5" top="2.5" left="5" right="5"/>
                     </opaqueInsets>
-                    <Label fx:id="out_data_file" alignment="CENTER_LEFT" contentDisplay="LEFT" prefWidth="250" prefHeight="25" snapToPixel="false" text="Файл с данными после фильтрации: " textAlignment="LEFT" textFill="BLACK" BorderPane.alignment="CENTER"/>
-                    <TextField fx:id="out_data_file_path" prefWidth="1000" prefHeight="25" text="C:\"/>
+                    <Label prefWidth="10" prefHeight="25"/>
+                    <Label fx:id="out_data_file" alignment="CENTER_LEFT" contentDisplay="LEFT" prefWidth="230" prefHeight="25" snapToPixel="false" text="Файл с данными после фильтрации: " textAlignment="LEFT" textFill="BLACK" BorderPane.alignment="CENTER"/>
+                    <TextField fx:id="out_data_file_path" prefWidth="890" prefHeight="25" text="C:\"/>
+                    <Label prefWidth="10" prefHeight="25"/>
                     <Label alignment="CENTER_LEFT" contentDisplay="LEFT" prefWidth="50" prefHeight="25" snapToPixel="false" text="Имя: " textAlignment="LEFT" textFill="BLACK" BorderPane.alignment="CENTER"/>
-                    <TextField fx:id="out_data_file_name" prefWidth="205" prefHeight="25" text="out_data_file.txt"/>
+                    <TextField fx:id="out_data_file_name" prefWidth="200" prefHeight="25" text="out_data_file.txt"/>
+                    <Label prefWidth="10" prefHeight="25"/>
+                    <ChoiceBox fx:id="out_data_radix" prefWidth="100" prefHeight="25"/>
                 </HBox>
             </VBox>
-            <Button fx:id="bttnCount" prefHeight="85" prefWidth="85" text="Рассчитать"/>
+            <VBox fx:id="hBoxTabPaneButtons" prefHeight="90" prefWidth="90">
+                <Button fx:id="bttnCount" prefHeight="42.5" prefWidth="85" text="Рассчитать" onAction="#count"/>
+                <Button fx:id="bttnSave" prefHeight="42.5" prefWidth="85" text="Сохранить" onAction="#save"/>
+            </VBox>
         </HBox>
     </bottom>
-    <center>
-
-    </center>
 </BorderPane>
 
