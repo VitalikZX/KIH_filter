@@ -5,94 +5,169 @@
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.chart.LineChart?>
 <?import javafx.scene.chart.NumberAxis?>
-<BorderPane minHeight="800.0"
-            minWidth="1600.0"
-            prefHeight="800.0"
-            prefWidth="1600.0"
-            styleClass="background"
-            xmlns="http://javafx.com/javafx/8.0.202"
-            xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="kih.Controller">
-    <center>
-        <VBox fx:id="GraphBoxTabPane" prefHeight="90" prefWidth="1510.0">
-            <LineChart fx:id="data" animated="false" title="Исходный сигнал" prefHeight="235" prefWidth="1600">
-                <xAxis>
-                   <NumberAxis fx:id="xAxisData" side="BOTTOM"/>
-                </xAxis>
-                <yAxis>
-                    <NumberAxis fx:id="yAxisData" lowerBound="-50" upperBound="50" side="LEFT" />
-                </yAxis>
-            </LineChart>
-            <LineChart fx:id="core" animated="false" title="Ядро фильтра" prefHeight="235" prefWidth="1600">
-                <xAxis>
-                    <NumberAxis fx:id="xAxisCore" side="BOTTOM"/>
-                </xAxis>
-                <yAxis>
-                    <NumberAxis fx:id="yAxisCore" lowerBound="-50" upperBound="50" side="LEFT" />
-                </yAxis>
-            </LineChart>
-            <LineChart fx:id="afh" animated="false" title="Фильтрованный сигнал" prefHeight="235" prefWidth="1600">
-                <xAxis>
-                    <NumberAxis fx:id="xAxisAFH" side="BOTTOM"/>
-                </xAxis>
-                <yAxis>
-                    <NumberAxis fx:id="yAxisAFH" lowerBound="-50" upperBound="50" side="LEFT" />
-                </yAxis>
-            </LineChart>
-        </VBox>
-    </center>
-    <bottom>
-        <HBox prefHeight="90.0" prefWidth="1600">
-            <VBox fx:id="hBoxTabPanePath" prefHeight="90" prefWidth="1510.0">
-                <HBox prefHeight="30.0" prefWidth="1500">
-                    <opaqueInsets >
-                        <Insets bottom="2.5" top="2.5" left="5" right="5"/>
-                    </opaqueInsets>
-                    <Label prefWidth="10" prefHeight="25"/>
-                    <Label fx:id="in_data_file" alignment="CENTER_LEFT" contentDisplay="LEFT" prefWidth="230" prefHeight="25" snapToPixel="false" text="Файл с данными для фильтрации: " textAlignment="LEFT" textFill="BLACK" BorderPane.alignment="CENTER"/>
-                    <TextField fx:id="in_data_file_path" prefWidth="890" prefHeight="25" text="C:\KIH_filter\files\"/>
-                    <Label prefWidth="10" prefHeight="25"/>
-                    <Label alignment="CENTER_LEFT" contentDisplay="LEFT" prefWidth="50" prefHeight="25" snapToPixel="false" text="Имя: " textAlignment="LEFT" textFill="BLACK" BorderPane.alignment="CENTER"/>
-                    <TextField fx:id="in_data_file_name" prefWidth="200" prefHeight="25" text="in_data.txt"/>
-                    <Label prefWidth="10" prefHeight="25"/>
-                    <ChoiceBox fx:id="in_data_radix" prefWidth="100" prefHeight="25"/>
-                </HBox>
-                <HBox prefHeight="30.0" prefWidth="1500">
-                    <opaqueInsets >
-                        <Insets bottom="2.5" top="2.5" left="5" right="5"/>
-                    </opaqueInsets>
-                    <Label prefWidth="10" prefHeight="25"/>
-                    <Label fx:id="h_file"  alignment="CENTER_LEFT" contentDisplay="LEFT" prefWidth="230" prefHeight="25" snapToPixel="false" text="Файл с ядром фильтра: " textAlignment="LEFT" textFill="BLACK" BorderPane.alignment="CENTER"/>
-                    <TextField fx:id="h_file_path" prefWidth="890" prefHeight="25" text="C:\KIH_filter\files\"/>
-                    <Label prefWidth="10" prefHeight="25"/>
-                    <Label alignment="CENTER_LEFT" contentDisplay="LEFT" prefWidth="50" prefHeight="25" snapToPixel="false" text="Имя: " textAlignment="LEFT" textFill="BLACK" BorderPane.alignment="CENTER"/>
-                    <TextField fx:id="h_file_name" prefWidth="200" prefHeight="25" text="h_file.txt"/>
-                    <Label prefWidth="10" prefHeight="25"/>
-                    <ChoiceBox fx:id="h_file_radix" prefWidth="100" prefHeight="25"/>
-                </HBox>
-                <HBox prefHeight="30.0" prefWidth="1500">
-                    <opaqueInsets >
-                        <Insets bottom="2.5" top="2.5" left="5" right="5"/>
-                    </opaqueInsets>
-                    <Label prefWidth="10" prefHeight="25"/>
-                    <Label fx:id="out_data_file" alignment="CENTER_LEFT" contentDisplay="LEFT" prefWidth="230" prefHeight="25" snapToPixel="false" text="Файл с данными после фильтрации: " textAlignment="LEFT" textFill="BLACK" BorderPane.alignment="CENTER"/>
-                    <TextField fx:id="out_data_file_path" prefWidth="890" prefHeight="25" text="C:\KIH_filter\files\"/>
-                    <Label prefWidth="10" prefHeight="25"/>
-                    <Label alignment="CENTER_LEFT" contentDisplay="LEFT" prefWidth="50" prefHeight="25" snapToPixel="false" text="Имя: " textAlignment="LEFT" textFill="BLACK" BorderPane.alignment="CENTER"/>
-                    <TextField fx:id="out_data_file_name" prefWidth="200" prefHeight="25" text="out_data.txt"/>
-                    <Label prefWidth="10" prefHeight="25"/>
-                    <ChoiceBox fx:id="out_data_radix" prefWidth="100" prefHeight="25"/>
-                </HBox>
-            </VBox>
-            <VBox fx:id="hBoxTabPaneButtons" prefHeight="90" prefWidth="90">
-                <Button fx:id="bttnCount" prefHeight="42.5" prefWidth="85" text="Рассчитать" onAction="#count"/>
-                <Button fx:id="bttnSave" prefHeight="42.5" prefWidth="85" text="Сохранить" onAction="#save"/>
-            </VBox>
-        </HBox>
-    </bottom>
-</BorderPane>
 
+<TabPane minHeight="800.0"
+         minWidth="1600.0"
+         prefHeight="800.0"
+         prefWidth="1600.0"
+         styleClass="background"
+         xmlns="http://javafx.com/javafx/8.0.202"
+         xmlns:fx="http://javafx.com/fxml/1"
+         fx:controller="kih.Controller"
+         tabClosingPolicy="UNAVAILABLE">
+    <tabs>
+        <Tab fx:id="filter_count" text="Расчет фильтра">
+            <content>
+                <BorderPane>
+                    <center>
+                        <VBox fx:id="GraphBoxTabPane" prefHeight="90" prefWidth="1510.0">
+                            <LineChart fx:id="data" animated="false" title="Исходный сигнал" prefHeight="235" prefWidth="1600">
+                                <xAxis>
+                                    <NumberAxis fx:id="xAxisData" side="BOTTOM"/>
+                                </xAxis>
+                                <yAxis>
+                                    <NumberAxis fx:id="yAxisData" lowerBound="-50" upperBound="50" side="LEFT" />
+                                </yAxis>
+                            </LineChart>
+                            <LineChart fx:id="core" animated="false" title="Ядро фильтра" prefHeight="235" prefWidth="1600">
+                                <xAxis>
+                                    <NumberAxis fx:id="xAxisCore" side="BOTTOM"/>
+                                </xAxis>
+                                <yAxis>
+                                    <NumberAxis fx:id="yAxisCore" lowerBound="-50" upperBound="50" side="LEFT" />
+                                </yAxis>
+                            </LineChart>
+                            <LineChart fx:id="afh" animated="false" title="Фильтрованный сигнал" prefHeight="235" prefWidth="1600">
+                                <xAxis>
+                                    <NumberAxis fx:id="xAxisAFH" side="BOTTOM"/>
+                                </xAxis>
+                                <yAxis>
+                                    <NumberAxis fx:id="yAxisAFH" lowerBound="-50" upperBound="50" side="LEFT" />
+                                </yAxis>
+                            </LineChart>
+                        </VBox>
+                    </center>
+                    <bottom>
+                        <HBox prefHeight="90.0" prefWidth="1600">
+                            <VBox fx:id="hBoxTabPanePath" prefHeight="90" prefWidth="1510.0">
+                                <HBox prefHeight="30.0" prefWidth="1500">
+                                    <opaqueInsets >
+                                        <Insets bottom="2.5" top="2.5" left="5" right="5"/>
+                                    </opaqueInsets>
+                                    <Label prefWidth="10" prefHeight="25"/>
+                                    <Label fx:id="in_data_file" alignment="CENTER_LEFT" contentDisplay="LEFT" prefWidth="230" prefHeight="25" snapToPixel="false" text="Файл с данными для фильтрации: " textAlignment="LEFT" textFill="BLACK" BorderPane.alignment="CENTER"/>
+                                    <TextField fx:id="in_data_file_path" prefWidth="890" prefHeight="25" text="C:\KIH_filter\files\"/>
+                                    <Label prefWidth="10" prefHeight="25"/>
+                                    <Label alignment="CENTER_LEFT" contentDisplay="LEFT" prefWidth="50" prefHeight="25" snapToPixel="false" text="Имя: " textAlignment="LEFT" textFill="BLACK" BorderPane.alignment="CENTER"/>
+                                    <TextField fx:id="in_data_file_name" prefWidth="200" prefHeight="25" text="in_data.txt"/>
+                                    <Label prefWidth="10" prefHeight="25"/>
+                                    <ChoiceBox fx:id="in_data_radix" prefWidth="100" prefHeight="25"/>
+                                </HBox>
+                                <HBox prefHeight="30.0" prefWidth="1500">
+                                    <opaqueInsets >
+                                        <Insets bottom="2.5" top="2.5" left="5" right="5"/>
+                                    </opaqueInsets>
+                                    <Label prefWidth="10" prefHeight="25"/>
+                                    <Label fx:id="h_file"  alignment="CENTER_LEFT" contentDisplay="LEFT" prefWidth="230" prefHeight="25" snapToPixel="false" text="Файл с ядром фильтра: " textAlignment="LEFT" textFill="BLACK" BorderPane.alignment="CENTER"/>
+                                    <TextField fx:id="h_file_path" prefWidth="890" prefHeight="25" text="C:\KIH_filter\files\"/>
+                                    <Label prefWidth="10" prefHeight="25"/>
+                                    <Label alignment="CENTER_LEFT" contentDisplay="LEFT" prefWidth="50" prefHeight="25" snapToPixel="false" text="Имя: " textAlignment="LEFT" textFill="BLACK" BorderPane.alignment="CENTER"/>
+                                    <TextField fx:id="h_file_name" prefWidth="200" prefHeight="25" text="h_file.txt"/>
+                                    <Label prefWidth="10" prefHeight="25"/>
+                                    <ChoiceBox fx:id="h_file_radix" prefWidth="100" prefHeight="25"/>
+                                </HBox>
+                                <HBox prefHeight="30.0" prefWidth="1500">
+                                    <opaqueInsets >
+                                        <Insets bottom="2.5" top="2.5" left="5" right="5"/>
+                                    </opaqueInsets>
+                                    <Label prefWidth="10" prefHeight="25"/>
+                                    <Label fx:id="out_data_file" alignment="CENTER_LEFT" contentDisplay="LEFT" prefWidth="230" prefHeight="25" snapToPixel="false" text="Файл с данными после фильтрации: " textAlignment="LEFT" textFill="BLACK" BorderPane.alignment="CENTER"/>
+                                    <TextField fx:id="out_data_file_path" prefWidth="890" prefHeight="25" text="C:\KIH_filter\files\"/>
+                                    <Label prefWidth="10" prefHeight="25"/>
+                                    <Label alignment="CENTER_LEFT" contentDisplay="LEFT" prefWidth="50" prefHeight="25" snapToPixel="false" text="Имя: " textAlignment="LEFT" textFill="BLACK" BorderPane.alignment="CENTER"/>
+                                    <TextField fx:id="out_data_file_name" prefWidth="200" prefHeight="25" text="out_data.txt"/>
+                                    <Label prefWidth="10" prefHeight="25"/>
+                                    <ChoiceBox fx:id="out_data_radix" prefWidth="100" prefHeight="25"/>
+                                </HBox>
+                            </VBox>
+                            <VBox fx:id="hBoxTabPaneButtons" prefHeight="90" prefWidth="90">
+                                <Button fx:id="bttnCount" prefHeight="42.5" prefWidth="85" text="Рассчитать" onAction="#count"/>
+                                <Button fx:id="bttnSave" prefHeight="42.5" prefWidth="85" text="Сохранить" onAction="#save"/>
+                            </VBox>
+                        </HBox>
+                    </bottom>
+                </BorderPane>
+            </content>
+        </Tab>
+        <Tab fx:id="core_count" text="Расчет ядра фильтра">
+            <content>
+                <BorderPane>
+                    <center>
+                        <VBox>
+                            <LineChart fx:id="windowChart" animated="false" title="Окно" prefHeight="350" prefWidth="1600">
+                                <xAxis>
+                                    <NumberAxis side="BOTTOM"/>
+                                </xAxis>
+                                <yAxis>
+                                    <NumberAxis lowerBound="-50" upperBound="50" side="LEFT" />
+                                </yAxis>
+                            </LineChart>
+                            <LineChart fx:id="coreChart" animated="false" title="Ядро фильтра" prefHeight="350" prefWidth="1600">
+                                <xAxis>
+                                    <NumberAxis side="BOTTOM"/>
+                                </xAxis>
+                                <yAxis>
+                                    <NumberAxis lowerBound="-50" upperBound="50" side="LEFT" />
+                                </yAxis>
+                            </LineChart>
+                        </VBox>
+                    </center>
+                    <bottom>
+                        <VBox prefHeight="60.0" prefWidth="1600">
+                            <HBox prefHeight="30.0" prefWidth="1600">
+                                <Label prefWidth="10" prefHeight="25"/>
+                                <Label alignment="CENTER_LEFT" contentDisplay="LEFT" prefWidth="230" prefHeight="25" snapToPixel="false" text="Формула окна: " textAlignment="LEFT" textFill="BLACK" BorderPane.alignment="CENTER"/>
+                                <TextField fx:id="core_function" prefWidth="670" prefHeight="25" text="f(y)"/>
+                                <Label prefWidth="10" prefHeight="25"/>
+                                <ChoiceBox fx:id="filter_type" prefWidth="100" prefHeight="25"/>
+                                <Label prefWidth="10" prefHeight="25"/>
+                                <ChoiceBox fx:id="paint_type" prefWidth="100" prefHeight="25"/>
+                                <Label prefWidth="10" prefHeight="25"/>
+                                <Label alignment="CENTER_LEFT" contentDisplay="LEFT" prefWidth="40" prefHeight="25" snapToPixel="false" text="Окно:" textAlignment="LEFT" textFill="BLACK" BorderPane.alignment="CENTER"/>
+                                <Label prefWidth="10" prefHeight="25"/>
+                                <ChoiceBox fx:id="core_name" prefWidth="130" prefHeight="25"/>
+                                <Label prefWidth="10" prefHeight="25"/>
+                                <Label alignment="CENTER_LEFT" contentDisplay="LEFT" prefWidth="60" prefHeight="25" snapToPixel="false" text="Порядок:" textAlignment="LEFT" textFill="BLACK" BorderPane.alignment="CENTER"/>
+                                <Label prefWidth="10" prefHeight="25"/>
+                                <ChoiceBox fx:id="core_order" prefWidth="100" prefHeight="25"/>
+                                <Label prefWidth="10" prefHeight="25"/>
+                                <Button fx:id="bttn_core_count" prefHeight="25" prefWidth="85" text="Рассчитать"/>
+                            </HBox>
+                            <HBox prefHeight="30.0" prefWidth="1600">
+                                <opaqueInsets >
+                                    <Insets bottom="2.5" top="2.5" left="5" right="5"/>
+                                </opaqueInsets>
+                                <Label prefWidth="10" prefHeight="25"/>
+                                <Label alignment="CENTER_LEFT" contentDisplay="LEFT" prefWidth="230" prefHeight="25" snapToPixel="false" text="Файл с ядром фильтра: " textAlignment="LEFT" textFill="BLACK" BorderPane.alignment="CENTER"/>
+                                <TextField fx:id="core_save_path" prefWidth="890" prefHeight="25" text="C:\KIH_filter\files\"/>
+                                <Label prefWidth="10" prefHeight="25"/>
+                                <Label alignment="CENTER_LEFT" contentDisplay="LEFT" prefWidth="50" prefHeight="25" snapToPixel="false" text="Имя: " textAlignment="LEFT" textFill="BLACK" BorderPane.alignment="CENTER"/>
+                                <TextField fx:id="core_save_name" prefWidth="200" prefHeight="25" text="h_file.txt"/>
+                                <Label prefWidth="10" prefHeight="25"/>
+                                <ChoiceBox fx:id="core_save_radix" prefWidth="100" prefHeight="25"/>
+                                <Label prefWidth="10" prefHeight="25"/>
+                                <Button fx:id="bttn_core_save" prefHeight="25" prefWidth="85" text="Сохранить"/>
+                            </HBox>
+                        </VBox>
+                    </bottom>
+                </BorderPane>
+            </content>
+        </Tab>
+    </tabs>
+</TabPane>

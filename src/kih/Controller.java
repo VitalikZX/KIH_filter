@@ -14,10 +14,20 @@ import java.util.ArrayList;
 
 public class Controller {
     private String [] sRadix = {"dec", "hex"};
+    private String [] sFilterType = {"ФНЧ", "ФВЧ", "ПП", "ПЗ"};
+    private String [] sPaintType = {"Поверх", "Заново"};
+    private String [] coreName = {"Наттала", "Кайзера", "Хемминга", "Блэкмана", "Харриса", "Ланцоша", "Чебышева"};
+    private String [] coreOrder = {"3", "5", "7", "9"};
+
     private ObservableList<String> radix = FXCollections.observableArrayList(sRadix);
+    private ObservableList<String> filterType = FXCollections.observableArrayList(sFilterType);
+    private ObservableList<String> paintType = FXCollections.observableArrayList(sPaintType);
+    private ObservableList<String> name = FXCollections.observableArrayList(coreName);
+    private ObservableList<String> order = FXCollections.observableArrayList(coreOrder);
 
     private File file;
     private BufferedReader in;
+    private BufferedWriter out;
     private String buffer;
 
     private ArrayList<Long> in_data = new ArrayList<>();
@@ -50,6 +60,17 @@ public class Controller {
     private ChoiceBox out_data_radix;
 
     @FXML
+    private ChoiceBox filter_type;
+    @FXML
+    private ChoiceBox paint_type;
+    @FXML
+    private ChoiceBox core_save_radix;
+    @FXML
+    private ChoiceBox core_name;
+    @FXML
+    private ChoiceBox core_order;
+
+    @FXML
     private LineChart<Number,Number> data;
     @FXML
     private LineChart<Number,Number> core;
@@ -66,11 +87,25 @@ public class Controller {
 
         out_data_radix.setItems(radix);
         out_data_radix.setValue(sRadix[0]);
+
+        filter_type.setItems(filterType);
+        filter_type.setValue(sFilterType[2]);
+
+        paint_type.setItems(paintType);
+        paint_type.setValue(sPaintType[0]);
+
+        core_save_radix.setItems(radix);
+        core_save_radix.setValue(sRadix[0]);
+
+        core_name.setItems(name);
+        core_name.setValue(coreName[0]);
+
+        core_order.setItems(order);
+        core_order.setValue(coreOrder[1]);
     }
 
     @FXML
     private void count(){
-//        System.out.println("count");
         try {
             //show not filtered signal
             file = new File(in_data_file_path.getText() + in_data_file_name.getText());
@@ -140,6 +175,19 @@ public class Controller {
 
     @FXML
     private void save(){
-        System.out.println("save");
+        try {
+            file = new File(out_data_file_path.getText() + out_data_file_name.getText());
+            out = new BufferedWriter(new FileWriter(file.getAbsoluteFile()));
+            for (int i = 0; i < out_data.length; i++) {
+                if (out_data_radix.getValue().equals("hex")) {
+                    out.write(String.valueOf(Long.toHexString(out_data[i])+"\n"));
+                } else {
+                    out.write(String.valueOf(out_data[i]+"\n"));
+                }
+                out.flush();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
